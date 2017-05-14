@@ -1,0 +1,33 @@
+  
+  
+    
+    
+    <div class='container'>  
+  
+      <h1>게시판</h1>
+      <form action ="board/create" method="post">
+      <div class="form-group">
+        
+        <input type="text" class="form-control" name="title" placeholder="제목">
+      </div>
+      <div class="form-group">
+        <textarea rows ="8" class="form-control" name="content" placeholder="내용"></textarea>
+        
+      </div>
+      
+      
+      <button type="submit" class="btn btn-default">글쓰기</button>
+      </form>
+      
+      
+      <% @posts.each do |post|%> <!-- '< % 안에는 루비 언어로 처리,해석 하겠다  = 는 출력 -->
+        <!-- 모든 게시판 글을 뽑아서 하나씩 |post| 에 임시적으로 저장해서-->
+        <!-- 이 안에서 계속 사용하겠다 posts를-->
+        <hr>
+        <p>제목</p><%= post.title %><br><br>
+        <p>내용</p><%= post.content %><br>
+        <hr>
+      <% end %>
+      
+      
+    </div>
