@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   root 'board#index'
-  get 'board/index'
+  get 'board/index' => 'board#index'
 
   post 'board/create'
 
-  get 'board/new'
-
-  get 'board/edit'
-
   get 'board/destroy'
+  
+  get 'destroy/:id' => 'board#destroy'
+  
+  get 'update_view/:id' => 'board#update_view'
 
+  post 'real_update/:update_id' => 'board#real_update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
