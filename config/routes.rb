@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'board#index'
   get 'board/index' => 'board#index'
 
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   get 'update_view/:id' => 'board#update_view'
 
   post 'real_update/:update_id' => 'board#real_update'
+  
+  post 'reply_create' => 'board#reply_create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
