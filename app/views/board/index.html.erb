@@ -19,7 +19,7 @@
         <!-- 모든 게시판 글을 뽑아서 하나씩 |post| 에 임시적으로 저장해서-->
         <!-- 이 안에서 계속 사용하겠다 posts를-->
         <hr>
-        <p>글쓴이</p><%= current_user.email%><br><br><br>
+        <p>글쓴이</p><%= p.user.email%><br><br><br>
         <p>제목</p><%= p.title %><br><br>
         <p>내용</p><%= p.content %><br><br>
         <p> 작성 날짜</p><p><%= p.created_at %></p><br>
@@ -37,6 +37,7 @@
         </form>
         
         <%p.replies.each do |rpy|%>
+        <p><%p.user.email %></p>
         <p><%=rpy.content%></p>
         <% end %>
         

@@ -1,7 +1,7 @@
 class BoardController < ApplicationController
   def index
     if user_signed_in?
-      @posts = Post.all #controller에서 @ 붙은 변수들은 view 파일 에서도 사용 가능
+      @posts = Post.all.reverse #controller에서 @ 붙은 변수들은 view 파일 에서도 사용 가능 reserve는 최근 글을 볼수 있도록 거기에 화면이 맞춰질수 있도록
     else
       redirect_to '/users/sign_in'
     end
@@ -10,9 +10,15 @@ class BoardController < ApplicationController
   end
 
   def create
-    post = Post.new
-    post.title = params[:title] #
-    post.content = params[:content]
+    #post = Post.new
+    #post.title = params[:title] #
+    #post.content = params[:content]
+    #post.user_id = current_user
+    post =  Post.new(title: params[:title],
+                     content: params[:reply_content],
+                     user: current_user)
+    #
+    #
     if post.save
     #redirect_to:back
       redirect_to '/board/index'
